@@ -12,7 +12,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-5319420.786536, -530390.840452, -5315364.220923, -527009.423522], map.getSize());
+map.getView().fit([-5474795.380096, -758464.430245, -5133427.585656, -501251.781084], map.getSize());
 
 //full zooms only
 map.getView().setProperties({constrainResolution: true});
@@ -485,44 +485,6 @@ var Title = new ol.control.Control({
 map.addControl(Title)
     
 //abstract
-
-var Abstract = new ol.control.Control({
-    element: (() => {
-        var titleElement = document.createElement('div');
-        titleElement.className = 'top-right-abstract ol-control';
-        titleElement.id = 'abstract';
-
-        var linkElement = document.createElement('a');
-
-        if (29 > 240) {
-            linkElement.setAttribute("onmouseenter", "showAbstract()");
-            linkElement.setAttribute("onmouseleave", "hideAbstract()");
-            linkElement.innerHTML = 'i';
-
-            window.hideAbstract = function() {
-                linkElement.classList.add("project-abstract");
-                linkElement.classList.remove("project-abstract-uncollapsed");
-                linkElement.innerHTML = 'i';
-            }
-
-            window.showAbstract = function() {
-                linkElement.classList.remove("project-abstract");
-                linkElement.classList.add("project-abstract-uncollapsed");
-                linkElement.innerHTML = 'Data: 01/05/2025 a 17/10/2025';
-            }
-
-            hideAbstract();
-        } else {
-            linkElement.classList.add("project-abstract-uncollapsed");
-            linkElement.innerHTML = 'Data: 01/05/2025 a 17/10/2025';
-        }
-
-        titleElement.appendChild(linkElement);
-        return titleElement;
-    })(),
-    target: 'top-right-container'
-});
-map.addControl(Abstract);
 
 
 //geolocate
